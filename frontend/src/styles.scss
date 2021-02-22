@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --app-primary-color: #5456ff;
+  --app-secondary-color: #3f3d56;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}

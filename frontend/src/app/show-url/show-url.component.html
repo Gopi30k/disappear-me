@@ -1,0 +1,19 @@
+<div id="url-container">
+  <h1>Hurray ! Your URL is here !</h1>
+
+  <div class="url-section">
+    <div class="url">
+      <a href="{{ urlPath }}" target="_blank">
+        <h3>{{ urlPath }}</h3>
+      </a>
+    </div>
+    <button
+      ngxClipboard
+      [cbContent]="urlPath"
+      class="btn"
+      (cbOnSuccess)="copied($event)"
+    >
+      {{ cpBtnText }}
+    </button>
+  </div>
+</div>

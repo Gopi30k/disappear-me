@@ -9,16 +9,22 @@ def disappear():
     if request.method == 'POST':
         request_value = request.json
         task = timer_task.delay(request_value)
-        url_path = request.url_root+"""{task_Id}""".format(task_Id=task.id)
-    return jsonify(url_path)
+        # url_path = request.url_root+"""{task_Id}""".format(task_Id=task.id)
+    return jsonify(task.id), 200
 
 
 @bp.route('/<url_path>', methods=['GET'])
 def checkDisappearingStatus(url_path):
-    print(url_path)
-    task = timer_task.AsyncResult(url_path)
-    response_msg = {
-        "task_id": task.id,
-        "ttl": task.info.get('ttl', 0),
-    }
-    return jsonify(response_msg)
+    response_msg = None
+    try:
+        task = timer_task.AsyncResult(url_path)
+        # print(task.id)
+        response_msg = {
+            "task_id": task.id,
+            "content": task.info.get('content', ""),
+            "type": task.info.get('type', ""),
+            "ttl": task.info.get('ttl', 0),
+        }
+    except Exception as e:
+        print('sdt')
+    return jsonify("response_msg"), 200
