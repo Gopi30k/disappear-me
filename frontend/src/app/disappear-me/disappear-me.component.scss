@@ -1,88 +1,45 @@
-#home-page {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background-color: #f9faff;
-
-  nav {
-    h1 {
-      font-family: "Pacifico", cursive;
-    }
-
-    #nav-bar {
-      .mat-toolbar-row,
-      .mat-toolbar-single-row {
-        height: 50px;
-        border-bottom: 1px solid rgba(61, 66, 75, 0.1);
-      }
-
-      a {
-        text-decoration: none;
-        color: var(--app-primary-color);
-      }
-
-      .example-spacer {
-        flex: 1 1 auto;
-      }
-
-      .sign-in-btn {
-        padding: 8px 16px;
-        border-radius: 0;
-        background: #fff;
-        border: 1px solid #e4e5e9;
-        color: var(--app-secondary-color);
-        font-weight: 600;
-        text-align: center;
-        border-radius: 4px;
-        cursor: pointer;
+.main-container {
+  margin: 24px auto;
+  flex-grow: 1;
+  padding: 24px;
+  width: 700px;
+  #options-section {
+    .opt-grp {
+      margin-bottom: 16px;
+      * {
+        margin: 10px;
       }
     }
   }
 
-  .main-container {
-    margin: 24px 48px;
-    overflow: auto;
-    flex-grow: 1;
-    padding: 24px;
-
-    #options-section {
-      .opt-grp {
-        margin-bottom: 16px;
-        * {
-          margin: 10px;
-        }
-      }
-    }
-
-    #content-section {
-      margin: 10px;
-      textarea {
-        margin: 0px;
-        overflow-y: auto;
-        resize: none;
-        font-size: 14px;
-        color: #333333;
-        background: #ffffff;
-        padding: 0.429em;
-        border: 1px solid #a6a6a6;
-        transition: border-color 0.2s, box-shadow 0.2s;
-        border-radius: 4px;
-      }
-      textarea:focus {
-        border: 1px solid #8dceff;
-        box-shadow: 0 0 0 0 0.2em #8dceff;
-      }
-    }
-
-    .generate-btn {
-      margin: 10px;
-      background-color: var(--app-primary-color);
-      padding: 0.429em 2em;
-      border: none;
-      color: #fff;
+  #content-section {
+    margin: 10px;
+    textarea {
+      margin: 0px;
+      overflow-y: auto;
+      resize: none;
+      font-size: 14px;
+      color: #333333;
+      background: #ffffff;
+      padding: 0.429em;
+      border: 1px solid #a6a6a6;
+      transition: border-color 0.2s, box-shadow 0.2s;
       border-radius: 4px;
-      cursor: pointer;
-      box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
     }
+    textarea:focus {
+      border: 1px solid #8dceff;
+      box-shadow: 0 0 0 0 0.2em #8dceff;
+    }
+  }
+
+  .generate-btn {
+    margin: 10px;
+    background-color: var(--app-primary-color);
+    padding: 0.429em 2em;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
   }
 }

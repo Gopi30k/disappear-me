@@ -1,2 +1,8 @@
-<!-- <app-disappear-me></app-disappear-me> -->
-<router-outlet></router-outlet>
+<div id="home-page">
+<nav>
+  <app-navbar></app-navbar>
+</nav>
+<main>
+  <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
+</main>
+</div>

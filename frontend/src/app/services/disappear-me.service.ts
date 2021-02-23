@@ -20,7 +20,7 @@ export class DisappearMeService {
 
   getTaskTimeDetails(taskId: string) {
     return this.http
-      .get(this.api_url + taskId)
+      .get<InputContent>(this.api_url + taskId)
       .pipe(catchError(this.handleError));
   }
 

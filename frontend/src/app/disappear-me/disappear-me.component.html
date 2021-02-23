@@ -1,72 +1,62 @@
-<div id="home-page">
-  <nav>
-    <mat-toolbar id="nav-bar">
-      <mat-toolbar-row>
-        <a [routerLink]="'[/]'"> <h1>Disappear-me</h1></a>
-        <span class="example-spacer"></span>
-        <button class="sign-in-btn">Sign In</button>
-      </mat-toolbar-row>
-    </mat-toolbar>
-  </nav>
-  <div class="main-container">
-    <div id="options-section">
-      <div class="opt-grp">
-        <h2>What do you want to make disappear?</h2>
-        <p-radioButton
-          name="contentType"
-          value="message"
-          label="Message"
-          [(ngModel)]="contentTypeSelected"
-        ></p-radioButton>
-        <p-radioButton
-          name="contentType"
-          value="link"
-          label="Link"
-          [(ngModel)]="contentTypeSelected"
-        ></p-radioButton>
-      </div>
-      <div class="opt-grp">
-        <h3>Time to Disappear</h3>
-        <p-dropdown
-          [options]="ttl_options"
-          [(ngModel)]="selectedTTL"
-        ></p-dropdown>
-      </div>
+<div class="main-container">
+  <div id="options-section">
+    <div class="opt-grp">
+      <h2>What do you want to make disappear?</h2>
+      <p-radioButton
+        name="contentType"
+        value="message"
+        label="Message"
+        [(ngModel)]="contentTypeSelected"
+      ></p-radioButton>
+      <p-radioButton
+        name="contentType"
+        value="link"
+        label="Link"
+        [(ngModel)]="contentTypeSelected"
+      ></p-radioButton>
     </div>
-    <div id="content-section">
-      <input
-        type="text"
-        class="content-field"
-        pInputText
-        size="60"
-        #linkField
-        [(ngModel)]="content"
-        placeholder="Your URL"
-        *ngIf="contentTypeSelected === 'link'"
-      />
-
-      <span style="margin-left: -20px" *ngIf="contentTypeSelected === 'link'">
-        <i
-          style="margin-left: -20px; cursor: pointer"
-          class="fa fa-clipboard"
-          (click)="onPaste()"
-          aria-hidden="true"
-        ></i>
-      </span>
-
-      <textarea
-        rows="7"
-        cols="60"
-        [(ngModel)]="content"
-        placeholder="Your Message"
-        class="text-area"
-        *ngIf="contentTypeSelected === 'message'"
-      ></textarea>
+    <div class="opt-grp">
+      <h3>Time to Disappear</h3>
+      <p-dropdown
+        [options]="ttl_options"
+        [(ngModel)]="selectedTTL"
+      ></p-dropdown>
     </div>
-
-    <button type="submit" class="generate-btn" (click)="onSubmit()">
-      Generate
-    </button>
   </div>
+  <div id="content-section">
+    <input
+      type="text"
+      class="content-field"
+      pInputText
+      size="60"
+      #linkField
+      [(ngModel)]="content"
+      placeholder="Your URL"
+      *ngIf="contentTypeSelected === 'link'"
+    />
+
+    <span style="margin-left: -20px" *ngIf="contentTypeSelected === 'link'">
+      <i
+        style="margin-left: -20px; cursor: pointer"
+        class="fa fa-clipboard"
+        (click)="onPaste()"
+        aria-hidden="true"
+      ></i>
+    </span>
+
+    <textarea
+      rows="7"
+      cols="60"
+      [(ngModel)]="content"
+      placeholder="Your Message"
+      class="text-area"
+      *ngIf="contentTypeSelected === 'message'"
+    ></textarea>
+  </div>
+
+  <button type="submit" class="generate-btn" (click)="onSubmit()">
+    Generate
+  </button>
 </div>
+
 <p-toast [preventOpenDuplicates]="true" position="bottom-center"></p-toast>
