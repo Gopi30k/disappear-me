@@ -9,7 +9,8 @@ import { InputContent } from "../models";
 })
 export class DisappearMeService {
   constructor(private http: HttpClient) {}
-  private api_url: string = "http://localhost:5000/";
+  // private api_url: string = "http://localhost:5000/";
+  private api_url: string = "https://api-disappear-me.herokuapp.com/";
   private base_url: string = location.origin;
   getURLPath(inputData: InputContent) {
     return this.http.post(this.api_url + "submit", inputData).pipe(
