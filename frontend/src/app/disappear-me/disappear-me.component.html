@@ -1,22 +1,26 @@
 <div class="main-container">
   <div id="options-section">
     <div class="opt-grp">
-      <h2>What do you want to make disappear?</h2>
+      <h1>What do you want to make disappear?</h1>
       <p-radioButton
         name="contentType"
         value="message"
         label="Message"
+        class="rdo-btn"
         [(ngModel)]="contentTypeSelected"
+        (onClick)="onChange()"
       ></p-radioButton>
       <p-radioButton
         name="contentType"
         value="link"
         label="Link"
+        class="rdo-btn"
         [(ngModel)]="contentTypeSelected"
+        (onClick)="onChange()"
       ></p-radioButton>
     </div>
     <div class="opt-grp">
-      <h3>Time to Disappear</h3>
+      <h4>Expiry Time</h4>
       <p-dropdown
         [options]="ttl_options"
         [(ngModel)]="selectedTTL"
@@ -26,7 +30,7 @@
   <div id="content-section">
     <input
       type="text"
-      class="content-field"
+      class="link-field"
       pInputText
       size="60"
       #linkField
@@ -34,15 +38,6 @@
       placeholder="Your URL"
       *ngIf="contentTypeSelected === 'link'"
     />
-
-    <span style="margin-left: -20px" *ngIf="contentTypeSelected === 'link'">
-      <i
-        style="margin-left: -20px; cursor: pointer"
-        class="fa fa-clipboard"
-        (click)="onPaste()"
-        aria-hidden="true"
-      ></i>
-    </span>
 
     <textarea
       rows="7"
@@ -52,6 +47,17 @@
       class="text-area"
       *ngIf="contentTypeSelected === 'message'"
     ></textarea>
+    <span
+      [ngClass]="contentTypeSelected === 'message' ? 'msg-type' : 'link-type'"
+      *ngIf="contentTypeSelected !== undefined"
+    >
+      <i
+        class="fa fa-clipboard"
+        (click)="onPaste()"
+        aria-hidden="true"
+        pTooltip="Paste"
+      ></i>
+    </span>
   </div>
 
   <button type="submit" class="generate-btn" (click)="onSubmit()">
@@ -60,3 +66,30 @@
 </div>
 
 <p-toast [preventOpenDuplicates]="true" position="bottom-center"></p-toast>
+
+<p-dialog
+  [(visible)]="displayURLDialog"
+  styleClass="mydialog"
+  modal="true"
+  [draggable]="false"
+>
+  <p-header>
+    <h2>Hurray 🎉 Your URL is here!</h2>
+  </p-header>
+
+  <div class="url-section">
+    <div class="url">
+      <a href="{{ urlPath }}" target="_blank">
+        <h2>{{ urlPath }}</h2>
+      </a>
+    </div>
+    <button
+      ngxClipboard
+      [cbContent]="urlPath"
+      class="btn"
+      (cbOnSuccess)="copied($event)"
+    >
+      {{ cpBtnText }}
+    </button>
+  </div>
+</p-dialog>

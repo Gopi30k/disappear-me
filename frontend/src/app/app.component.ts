@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { type } from "os";
 
 @Component({
   selector: "app-root",
@@ -6,9 +7,19 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  title = "frontend";
+  showNavBar: boolean = true;
 
   public onRouterOutletActivate(event: any) {
-    console.log(event);
+    //   console.log(Object(event));
+    //   console.log(typeof event);
+    //   console.log(event.constructor);
+    //   if (
+    //     event.constructor.name === "ContentViewPageComponent" &&
+    //     event.contentObj.type === "link"
+    //   ) {
+    //     console.log(event);
+    //     this.showNavBar = false;
+    //   }
+    // }
   }
 }

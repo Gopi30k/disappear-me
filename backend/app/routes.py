@@ -20,12 +20,20 @@ def checkDisappearingStatus(url_path):
     response_msg = None
     try:
         task = timer_task.AsyncResult(url_path)
-        response_msg = {
-            "task_id": task.id,
-            "content": task.info.get('content', ""),
-            "type": task.info.get('type', ""),
-            "ttl": task.info.get('ttl', 0),
-        }
+        print(task.state)
+        if task.state == 'PROGRESS':
+            response_msg = {
+                "task_id": task.id,
+                "active": True,
+                "content": task.info.get('content', ""),
+                "type": task.info.get('type', ""),
+                "ttl": task.info.get('ttl', 0),
+            }
+        elif task.state == 'SUCCESS':
+            response_msg = {
+                "task_id": task.id,
+                "active": False
+            }
     except Exception as e:
-        return jsonify(msg="Error"), 400
+        return jsonify(msg="Error while creating disappearing content, Please try again later"), 500
     return jsonify(response_msg), 200

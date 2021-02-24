@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { SelectItem } from "primeng/api";
-import { InputContent } from "../models";
+import { InputContent, TTL } from "../models";
 import { MessageService } from "primeng/api";
 import { DisappearMeService } from "../services/disappear-me.service";
 import { DialogService, DynamicDialogRef } from "primeng/dynamicdialog";
@@ -15,17 +15,19 @@ import { ShowURLComponent } from "../show-url/show-url.component";
 export class DisappearMeComponent implements OnInit {
   contentTypeSelected: string;
   ttl_options: SelectItem[];
-  selectedTTL: number;
+  selectedTTL: number = 60;
   content: string;
   ref: DynamicDialogRef;
-
+  displayURLDialog: boolean = false;
+  urlPath: string;
+  cpBtnText: string = "Copy";
   constructor(
     private messageService: MessageService,
     public dialogService: DialogService,
     private disappearService: DisappearMeService
   ) {
     this.ttl_options = [
-      { label: "Select time", value: null },
+      // { label: "Select time", value: null },
       { label: "1 minute", value: 60 },
       { label: "5 minutes", value: 300 },
       { label: "15 minutes", value: 900 },
@@ -34,14 +36,20 @@ export class DisappearMeComponent implements OnInit {
     ];
   }
 
+  onChange() {
+    this.content = undefined;
+  }
+
   ngOnInit() {}
 
   onPaste(event: ClipboardEvent) {
     navigator["clipboard"].readText().then((data) => {
-      if (this.contentTypeSelected === "link") {
-        this.content = data;
-      }
+      this.content = data;
     });
+  }
+
+  copied(urlPath) {
+    this.cpBtnText = "Copied!";
   }
 
   showURLDialog(urlPathData) {
@@ -52,26 +60,29 @@ export class DisappearMeComponent implements OnInit {
   }
 
   resetFields() {
-    this.selectedTTL = undefined;
+    this.selectedTTL = 60;
     this.content = undefined;
     this.contentTypeSelected = undefined;
   }
 
   onSubmit() {
-    // console.log(this.content, this.contentTypeSelected, this.selectedTTL);
+    console.log(this.content, this.contentTypeSelected, this.selectedTTL);
 
     if (this.content && this.contentTypeSelected && this.selectedTTL) {
       const disappearObj: InputContent = {
         content: this.content,
         type: this.contentTypeSelected,
         ttl: this.selectedTTL,
+        active: true,
       };
       // console.log(disappearObj);
 
       this.disappearService.getURLPath(disappearObj).subscribe(
         (data) => {
           console.log(data);
-          this.showURLDialog(data);
+          // this.showURLDialog(data);
+          this.urlPath = data;
+          this.displayURLDialog = true;
           this.resetFields();
         },
         (err) => {

@@ -35,12 +35,16 @@ export class ContentViewPageComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.disappearService.getTaskTimeDetails(params.get("task_id")).subscribe(
         (data) => {
-          if (data.type === "link") {
-            this.document.location.href = data.content;
+          this.contentObj = data;
+          console.log(this.contentObj);
+          if (this.contentObj.active) {
+            if (this.contentObj.type === "link") {
+              this.document.location.href = this.contentObj.content;
+            } else if (this.contentObj.type === "message") {
+              this.remainingSeconds = data.ttl;
+            }
           } else {
-            this.contentObj = data;
-            this.remainingSeconds = data.ttl;
-            console.log(data);
+            this.remainingSeconds = 0;
           }
         },
         (err) => {

@@ -1,8 +1,3 @@
-<div id="home-page">
-<nav>
-  <app-navbar></app-navbar>
-</nav>
-<main>
-  <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
-</main>
-</div>
+<!-- <app-navbar *ngIf="showNavBar"></app-navbar> -->
+<app-navbar></app-navbar>
+<router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>

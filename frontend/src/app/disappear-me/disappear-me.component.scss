@@ -1,11 +1,10 @@
 .main-container {
   margin: 24px auto;
-  flex-grow: 1;
-  padding: 24px;
-  width: 700px;
+  width: 70%;
   #options-section {
     .opt-grp {
       margin-bottom: 16px;
+
       * {
         margin: 10px;
       }
@@ -14,6 +13,7 @@
 
   #content-section {
     margin: 10px;
+    position: relative;
     textarea {
       margin: 0px;
       overflow-y: auto;
@@ -25,10 +25,26 @@
       border: 1px solid #a6a6a6;
       transition: border-color 0.2s, box-shadow 0.2s;
       border-radius: 4px;
+      outline: none;
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 0 0.2em #8dceff;
+        border: 1px solid var(--app-primary-color);
+      }
     }
-    textarea:focus {
-      border: 1px solid #8dceff;
-      box-shadow: 0 0 0 0 0.2em #8dceff;
+
+    .msg-type {
+      margin-left: -25px;
+      bottom: 15px;
+      position: absolute;
+      color: var(--app-secondary-color);
+      cursor: pointer;
+    }
+    .link-type {
+      margin-left: -25px;
+      color: var(--app-secondary-color);
+      cursor: pointer;
     }
   }
 
@@ -43,3 +59,110 @@
     box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
   }
 }
+
+:host {
+  ::ng-deep {
+    .ui-radiobutton {
+      .ui-radiobutton-box.ui-state-active {
+        border-color: var(--app-primary-color);
+        background-color: var(--app-primary-color);
+        color: #fff;
+
+        &:not(.ui-state-disabled):hover {
+          border-color: #8081ff;
+          background-color: #8081ff;
+          color: #fff;
+        }
+      }
+
+      .ui-radiobutton-box.ui-state-focus {
+        box-shadow: 0 0 0 0.2em #b3b3ff;
+      }
+    }
+
+    .ui-dropdown {
+      &:not(.ui-state-disabled).ui-state-focus {
+        box-shadow: 0 0 0 0.2em #b3b3ff;
+        border-color: var(--app-primary-color);
+      }
+    }
+
+    .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight {
+      background-color: #8081ff;
+    }
+
+    .ui-inputtext:enabled:focus:not(.ui-state-error) {
+      box-shadow: 0 0 0 0.2em #b3b3ff;
+      border-color: var(--app-primary-color);
+    }
+
+    // .p-dynamicdialog {
+    //   background-color: red;
+    // }
+
+    .mydialog {
+      width: 450px;
+      // height: 50vh;
+      // padding: 30px;
+    }
+
+    .ui-dialog {
+      border-radius: 12px;
+      .ui-dialog-titlebar {
+        border: None;
+        background-color: #fff;
+        color: #333333;
+        padding: 1em;
+        border-top-right-radius: 16px;
+        border-top-left-radius: 16px;
+        text-align: center;
+
+        .ui-dialog-title {
+          display: inline-block;
+          text-align: center;
+        }
+      }
+
+      .ui-dialog-content {
+        border: none;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+        height: 250px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .url-section {
+      margin: 16px;
+      text-align: center;
+      .url {
+        font-size: 10px;
+        text-decoration: underline;
+        margin-bottom: 16px;
+      }
+
+      .btn {
+        background-color: var(--app-primary-color);
+        color: #fff;
+        outline: none;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+        border-radius: 20px;
+      }
+    }
+  }
+}
+
+// body .ui-dialog-titlebar.ui-widget-header.ui-helper-clearfix {
+//   background: #fff;
+//   border: none;
+//   border-top-right-radius: 16px;
+//   border-top-left-radius: 16px;
+// }
+// body .ui-corner-top {
+//   border-top-left-radius: 16px;
+//   border-top-right-radius: 16px;
+// }
