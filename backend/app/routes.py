@@ -4,6 +4,11 @@ from .tasks import timer_task
 bp = Blueprint("all", __name__)
 
 
+@bp.route("/", methods=['GET'])
+def index():
+    return "Hey welcome", 200
+
+
 @bp.route("/submit", methods=['POST'])
 def disappear():
     if request.method == 'POST':

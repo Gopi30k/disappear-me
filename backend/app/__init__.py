@@ -5,8 +5,8 @@ load_dotenv()
 
 
 def make_celery(app_name=__name__):
-    backend = os.getenv("CELERY_BACKEND_URI")
-    broker = os.getenv("CELERY_BROKER_URI")
+    backend = os.getenv("DATABASE_URL")
+    broker = os.getenv("REDIS_URL")
     return Celery(app_name, backend=backend, broker=broker)
 
 
