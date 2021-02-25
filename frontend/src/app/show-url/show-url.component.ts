@@ -17,7 +17,7 @@ export class ShowURLComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if ("data" in this.config) {
       this.urlPath = this.config.data;
-      console.log(this.config.data);
+      // console.log(this.config.data);
     }
   }
 

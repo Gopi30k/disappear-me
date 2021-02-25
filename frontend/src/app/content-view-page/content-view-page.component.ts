@@ -36,7 +36,7 @@ export class ContentViewPageComponent implements OnInit {
       this.disappearService.getTaskTimeDetails(params.get("task_id")).subscribe(
         (data) => {
           this.contentObj = data;
-          console.log(this.contentObj);
+          // console.log(this.contentObj);
           if (this.contentObj.active) {
             if (this.contentObj.type === "link") {
               this.document.location.href = this.contentObj.content;
@@ -48,7 +48,7 @@ export class ContentViewPageComponent implements OnInit {
           }
         },
         (err) => {
-          console.log(err);
+          // console.log(err);
         }
       );
     });

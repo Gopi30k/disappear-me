@@ -66,7 +66,7 @@ export class DisappearMeComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.content, this.contentTypeSelected, this.selectedTTL);
+    // console.log(this.content, this.contentTypeSelected, this.selectedTTL);
 
     if (this.content && this.contentTypeSelected && this.selectedTTL) {
       const disappearObj: InputContent = {
@@ -78,7 +78,7 @@ export class DisappearMeComponent implements OnInit {
 
       this.disappearService.getURLPath(disappearObj).subscribe(
         (data) => {
-          console.log(data);
+          // console.log(data);
           // this.showURLDialog(data);
           this.urlPath = data;
           this.displayURLDialog = true;
