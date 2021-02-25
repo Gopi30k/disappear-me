@@ -73,7 +73,6 @@ export class DisappearMeComponent implements OnInit {
         content: this.content,
         type: this.contentTypeSelected,
         ttl: this.selectedTTL,
-        active: true,
       };
       // console.log(disappearObj);
 

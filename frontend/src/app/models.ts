@@ -3,7 +3,7 @@ export interface InputContent {
   type?: string;
   ttl?: number;
   task_id?: string;
-  active: boolean;
+  active?: boolean;
 }
 
 export interface TTL {

@@ -27,42 +27,43 @@
       ></p-dropdown>
     </div>
   </div>
-  <div id="content-section">
-    <input
-      type="text"
-      class="link-field"
-      pInputText
-      size="60"
-      #linkField
-      [(ngModel)]="content"
-      placeholder="Your URL"
-      *ngIf="contentTypeSelected === 'link'"
-    />
+  <div class="content-section">
+    <div>
+      <input
+        type="text"
+        class="link-field"
+        pInputText
+        size="60"
+        #linkField
+        [(ngModel)]="content"
+        placeholder="Your URL"
+        *ngIf="contentTypeSelected === 'link'"
+      />
 
-    <textarea
-      rows="7"
-      cols="60"
-      [(ngModel)]="content"
-      placeholder="Your Message"
-      class="text-area"
-      *ngIf="contentTypeSelected === 'message'"
-    ></textarea>
-    <span
-      [ngClass]="contentTypeSelected === 'message' ? 'msg-type' : 'link-type'"
-      *ngIf="contentTypeSelected !== undefined"
-    >
-      <i
-        class="fa fa-clipboard"
-        (click)="onPaste($event)"
-        aria-hidden="true"
-        pTooltip="Paste"
-      ></i>
-    </span>
+      <textarea
+        rows="7"
+        cols="60"
+        [(ngModel)]="content"
+        placeholder="Your Message"
+        class="text-area"
+        *ngIf="contentTypeSelected === 'message'"
+      ></textarea>
+      <span
+        [ngClass]="contentTypeSelected === 'message' ? 'msg-type' : 'link-type'"
+        *ngIf="contentTypeSelected !== undefined"
+      >
+        <i
+          class="fa fa-clipboard"
+          (click)="onPaste($event)"
+          aria-hidden="true"
+          pTooltip="Paste"
+        ></i>
+      </span>
+    </div>
+    <button type="submit" class="generate-btn" (click)="onSubmit()">
+      Generate
+    </button>
   </div>
-
-  <button type="submit" class="generate-btn" (click)="onSubmit()">
-    Generate
-  </button>
 </div>
 
 <p-toast [preventOpenDuplicates]="true" position="bottom-center"></p-toast>

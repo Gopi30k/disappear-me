@@ -1,12 +1,13 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
 })
-export class AppComponent {
-  showNavBar: boolean = true;
+export class AppComponent implements OnInit, OnDestroy {
+  constructor() {}
+  ngOnInit() {}
 
   public onRouterOutletActivate(event: any) {
     //   console.log(Object(event));
@@ -21,4 +22,6 @@ export class AppComponent {
     //   }
     // }
   }
+
+  ngOnDestroy() {}
 }
