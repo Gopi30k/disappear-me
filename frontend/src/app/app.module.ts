@@ -12,7 +12,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ShowURLComponent } from "./show-url/show-url.component";
 import { ClipboardModule } from "ngx-clipboard";
 import { ContentViewPageComponent } from "./content-view-page/content-view-page.component";
-
+import { NgxSpinnerModule } from "ngx-spinner";
+import { LoaderInterceptor } from "./http-interceptor/loader-interceptor";
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,8 +32,15 @@ import { ContentViewPageComponent } from "./content-view-page/content-view-page.
     AngularMaterialModule,
     PrimengModule,
     ClipboardModule,
+    NgxSpinnerModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ShowURLComponent],
 })

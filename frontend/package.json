@@ -27,6 +27,7 @@
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "ngx-clipboard": "^12.3.1",
+    "ngx-spinner": "^8.1.0",
     "path": "^0.12.7",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
