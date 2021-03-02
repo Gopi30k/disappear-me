@@ -1,0 +1,116 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.view-container {
+  margin-left: 24px;
+  .create-btn {
+    margin-bottom: 16px;
+    background-color: var(--app-primary-color);
+    padding: 0.429em 2em;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
+  }
+}
+
+table {
+  width: 90%;
+  // margin: 0 auto;
+  border-radius: 7px;
+}
+
+th.mat-header-cell {
+  text-align: left;
+  font-weight: 600;
+  color: var(--app-primary-color);
+  &:last-of-type {
+    text-align: right;
+  }
+}
+td.mat-cell {
+  text-align: left;
+
+  &:first-of-type {
+    padding: 0 14px;
+  }
+}
+
+.status {
+  padding: 4px;
+  border-radius: 16px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.EXPIRED {
+  background: #a3abaf;
+}
+
+.ACTIVE {
+  background: #40d78f;
+}
+
+.FAILURE {
+  background: #ee4c48;
+}
+
+// .expiry-time {
+//   border: 1px solid var(--app-secondary-color);
+// }
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  // display: flex;
+}
+
+.example-element-diagram {
+  padding: 10px;
+  margin: 8px 0;
+  min-height: 42px;
+  max-height: 142px;
+  text-align: justify;
+  background-color: #f5f6f8;
+  border-radius: 7px;
+  overflow-y: auto;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+
+:host {
+  ::ng-deep {
+    .ui-inputtext:enabled:focus:not(.ui-state-error) {
+      box-shadow: 0 0 0 0.2em #b3b3ff;
+      border-color: var(--app-primary-color);
+    }
+  }
+}

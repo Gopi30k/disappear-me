@@ -1,0 +1,149 @@
+<div class="view-container">
+  <button
+    type="button"
+    (click)="authenticatedUserGenerate()"
+    class="create-btn"
+  >
+    Create
+  </button>
+
+  <table
+    mat-table
+    [dataSource]="userContent"
+    multiTemplateDataRows
+    matSort
+    class="mat-elevation-z8"
+  >
+    <!-- <ng-container
+    matColumnDef="{{ column }}"
+    *ngFor="let column of columnsToDisplay"
+  >
+    <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+    <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+  </ng-container> -->
+
+    <ng-container matColumnDef="icon">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element; let i = index">
+        <i
+          [ngClass]="
+            element === expandedElement
+              ? 'fa fa-minus-square'
+              : 'fa fa-plus-square'
+          "
+          aria-hidden="true"
+          style="cursor: pointer; color: var(--app-primary-color)"
+          (click)="onClick(element)"
+        ></i>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td
+        mat-cell
+        *matCellDef="let element; let i = index"
+        style="font-weight: 600"
+      >
+        {{ element?.result?.type | titlecase }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="ttl">
+      <th mat-header-cell *matHeaderCellDef>Expiry Time</th>
+      <td mat-cell *matCellDef="let element" class="expiry-time">
+        {{ element?.result?.time }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="date_done">
+      <th mat-header-cell *matHeaderCellDef>Completed Date</th>
+      <td mat-cell *matCellDef="let element">
+        {{
+          element?.date_done === null
+            ? "In Progress"
+            : (element?.date_done | date: "medium")
+        }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">
+        <span class="status" [ngClass]="statusCodes[element?.status]"
+          >{{ statusCodes[element?.status] }}
+        </span>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="url_path">
+      <th mat-header-cell *matHeaderCellDef>URL</th>
+      <td mat-cell *matCellDef="let element">
+        <a href="{{ url + '/' + element?.task_id }}" target="_blank">{{
+          url + "/" + element?.task_id
+        }}</a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="retry">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <i
+          class="fa fa-repeat retry"
+          aria-hidden="true"
+          (click)="retryTask(element)"
+        ></i>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <i
+          class="fa fa-trash delete"
+          aria-hidden="true"
+          (click)="deleteTask(element)"
+        ></i>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail">
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [attr.colspan]="columnsToDisplay.length"
+      >
+        <div
+          class="example-element-detail"
+          [@detailExpand]="
+            element == expandedElement ? 'expanded' : 'collapsed'
+          "
+        >
+          <div class="example-element-diagram">
+            <div class="example-element-position">
+              {{ element?.result?.content }}
+            </div>
+            <!-- <div class="example-element-symbol">{{ element?.result?.type }}</div>
+          <div class="example-element-name">{{ element?.result?.ttl }}</div>
+          <div class="example-element-weight">{{ element?.date_done }}</div> -->
+          </div>
+          <!-- <div class="example-element-description">
+          {{ element.description }}
+          <span class="example-element-description-attribution">
+            -- Wikipedia
+          </span>
+        </div> -->
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr
+      mat-row
+      *matRowDef="let element; columns: columnsToDisplay"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: ['expandedDetail']"
+      class="example-detail-row"
+    ></tr>
+  </table>
+  <!-- {{ expandedElement | json }} -->
+</div>
