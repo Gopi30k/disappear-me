@@ -1,12 +1,37 @@
-<nav>
+<nav *ngIf="nav.visible">
   <mat-toolbar id="nav-bar">
-    <mat-toolbar-row>
+    <!-- <mat-toolbar-row>
       <h1 [routerLink]="['']">Disappear-me</h1>
       <span class="example-spacer"></span>
-      <div class="btn-grp">
-        <button id="sign-in-btn">Sign In</button>
+      <div class="btn-grp" *ngIf="nav.signInBtn">
+        <button class="sign-in-btn" [routerLink]="['/user/login']">
+          Sign In
+        </button>
         <p>to manage all your expired links</p>
       </div>
+      <button class="sign-in-btn" *ngIf="!nav.signInBtn" (click)="signOut()">
+        Sign Out
+      </button>
+    </mat-toolbar-row> -->
+    <mat-toolbar-row>
+      <h1 (click)="onHomeNavigate()">Disappear-me</h1>
+      <span class="example-spacer"></span>
+      <div
+        class="btn-grp"
+        *ngIf="!authService.isUserLoggedIn() || authService.isHome"
+      >
+        <button class="sign-in-btn" [routerLink]="['/user/login']">
+          Sign In
+        </button>
+        <p>to manage all your expired links</p>
+      </div>
+      <button
+        class="sign-in-btn"
+        *ngIf="authService.isUserLoggedIn() && !authService.isHome"
+        (click)="authService.logOutUser()"
+      >
+        Sign Out
+      </button>
     </mat-toolbar-row>
   </mat-toolbar>
 </nav>

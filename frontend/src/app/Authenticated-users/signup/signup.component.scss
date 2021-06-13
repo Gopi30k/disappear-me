@@ -1,0 +1,78 @@
+#signup-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  #signup-illustration {
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+    background-color: #f4f7fe;
+    .header {
+      margin: 24px 0;
+      h1 {
+        font-family: "Pacifico", cursive;
+        color: var(--app-primary-color);
+      }
+      h4 {
+        color: var(--app-secondary-color);
+      }
+    }
+
+    img {
+      width: 450px;
+      height: 450px;
+    }
+  }
+
+  #form-container {
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    .header {
+      margin: 24px 0;
+      h1 {
+        color: var(--app-secondary-color);
+      }
+    }
+    .signup-form {
+      label {
+        color: var(--app-secondary-color);
+        font-size: 13px;
+        font-weight: bold;
+      }
+      .text-danger {
+        color: #e91224;
+        font-size: 14px;
+      }
+      #btm {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        align-items: center;
+        button {
+          background-color: var(--app-primary-color);
+          border-color: var(--app-primary-color);
+        }
+        h5 {
+          color: var(--app-secondary-color);
+          a {
+            color: var(--app-primary-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+:host {
+  ::ng-deep {
+    .ui-inputtext:enabled:focus:not(.ui-state-error) {
+      box-shadow: 0 0 0 0.2em #b3b3ff;
+      border-color: var(--app-primary-color);
+    }
+  }
+}

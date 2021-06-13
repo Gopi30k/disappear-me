@@ -3,3 +3,11 @@
 <main>
   <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
 </main>
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="small"
+  color="#fff"
+  type="square-jelly-box"
+  [fullScreen]="true"
+  ><p style="color: white">Loading...</p></ngx-spinner
+>

@@ -81,3 +81,13 @@ python run.py
 http://127.0.0.1:5000 - Flask
 http://127.0.0.1:5555 - Flower Celery
 ```
+
+11.)
+
+```
+from app.factory import db,create_app
+from app.models import User, Task, TaskExtended, TaskSet
+app = create_app()
+app.app_context().push()
+db.session.query(User).all()
+```

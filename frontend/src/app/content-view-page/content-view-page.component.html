@@ -3,7 +3,6 @@
     class="msg-view-conatiner"
     *ngIf="contentObj.active && remainingSeconds > 0"
   >
-    <!-- <h2>Message</h2> -->
     <div class="msg-section">
       <p>{{ contentObj?.content }}</p>
     </div>
@@ -17,11 +16,11 @@
         {{ secondsLeft > 0 ? secondsLeft + "s" : "" }}
       </h4>
     </div>
-    <div
-      class="msg-expired-container"
-      *ngIf="!contentObj.active || remainingSeconds === 0"
-    >
-      <h1>Oops! Your message has been expired...</h1>
-    </div>
+  </div>
+  <div
+    class="msg-expired-container"
+    *ngIf="!contentObj.active || remainingSeconds === 0"
+  >
+    <h1>Oops! Your message has been expired...</h1>
   </div>
 </div>
